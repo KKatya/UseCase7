@@ -1,3 +1,5 @@
+using UseCase7.Services;
+
 namespace UseCase7.Tests
 {
     /// <summary>

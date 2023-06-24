@@ -1,10 +1,10 @@
 ﻿using UseCase7.Models;
 
-namespace UseCase7;
+namespace UseCase7.Services;
 
-public class StudentConverter
+public static class StudentConverter
 {
-    public List<Student> ConvertStudents(List<Student> students)
+    public static List<Student> ConvertStudents(List<Student> students)
     {
         return students.Select(student =>
         {

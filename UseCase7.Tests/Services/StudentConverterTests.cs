@@ -1,15 +1,15 @@
 using UseCase7.Models;
+using UseCase7.Services;
 
 namespace UseCase7.Tests
 {
     /// <summary>
     /// Tests setup for <see cref="StudentConverter"/>
     /// </summary>
-    public partial class StudentConverterTests
+    public partial class StudentConverterTests : BaseTest
     {
         private List<Student> _students;
         private List<Student> _resultStudents;
-        private StudentConverter _studentConverter;
 
         /// <summary>
         /// Setup constructor
@@ -18,10 +18,9 @@ namespace UseCase7.Tests
         {
             _students = new List<Student>();
             _resultStudents = new List<Student>();
-            _studentConverter = new StudentConverter();
         }
 
-        #region GIven
+        #region Given
         private void GivenNullListProvided() => _students = null!;
 
         private void GivenNoStudentsProvided() => _students = new List<Student>();
@@ -30,7 +29,7 @@ namespace UseCase7.Tests
         #endregion
 
         #region When
-        private void WhenConvertingStudents() => _resultStudents = _studentConverter.ConvertStudents(_students);
+        private void WhenConvertingStudents() => _resultStudents = StudentConverter.ConvertStudents(_students);
         #endregion
 
         #region Then
@@ -44,11 +43,6 @@ namespace UseCase7.Tests
         private void ThenEmptyResultReturned()
         {
             Assert.Empty(_resultStudents);
-        }
-
-        private static void ThenErrorIsThrown<TException>(Action when) where TException : Exception
-        {
-            Assert.Throws<TException>(when);
         }
         #endregion
     }
